@@ -9,6 +9,8 @@
 /**
  * This function is being implemented on platform specific files.
  * Check src/platform/
+ * 
+ * @return The CHazelWindow window instance.
 */
 CHazelWindow* CHazelCreateWindow(const char *title, int width, int height);
 
