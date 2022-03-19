@@ -1,5 +1,6 @@
 #ifndef CHAZEL_CORE_H
 #define CHAZEL_CORE_H
+
 #include <stdio.h>
 #include <stdlib.h>
 

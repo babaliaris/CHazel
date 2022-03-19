@@ -51,10 +51,15 @@ static void Run(struct CHazelApp *this)
 	glfwTerminate();
 }
 
+
+
+
 static void OnDestroy(struct CHazelApp *this)
 {
 	printf("OnDestroy!\n");
 }
+
+
 
 
 CHazelApp* CHazelCreateApp()
