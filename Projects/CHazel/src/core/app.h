@@ -1,7 +1,7 @@
 #ifndef CHAZEL_APP_H
 #define CHAZEL_APP_H
 
-#include "window.h"
+#include <core/window.h>
 
 
 /**
@@ -37,8 +37,20 @@ typedef struct CHazelApp
 CHazelApp;
 
 
+/**
+ * Creates a new CHazel App. Should ONLY be called once!
+ * 
+ * @return The new CHazelApp instance.
+*/
 CHazelApp* CHazelCreateApp();
 
+
+
+/**
+ * This function must be implemeted by the client.
+ * 
+ * @return The CHazelApp instance.
+*/
 CHazelApp* CHazelEntryPoint();
 
 #endif

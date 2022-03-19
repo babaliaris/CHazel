@@ -53,6 +53,7 @@ static void OnDestroy(struct CHazelApp *obj)
 
 CHazelApp* CHazelCreateApp()
 {
+	//Create the app.
 	CHazelApp* new_app = (CHazelApp *)CHZ_NEW(CHazelApp);
 
 	//Store this object into itself.
