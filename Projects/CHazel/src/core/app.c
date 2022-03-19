@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "app.h"
 #include "core.h"
+#include <core/debug/coreLogger.h>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -37,7 +38,7 @@ static void Run(struct CHazelApp *obj)
 
 static void OnDestroy(struct CHazelApp *obj)
 {
-	printf("...........................CHazelApp->OnDestroy()\n");
+	CHZ_CORE_IMPORTANT("...........................CHazelApp->OnDestroy()");
 	CHZ_DESTROY(obj->m_Window);
 }
 

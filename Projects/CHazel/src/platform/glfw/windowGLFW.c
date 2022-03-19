@@ -1,11 +1,12 @@
 #include "pch.h"
 #include "windowGLFW.h"
 #include <core/core.h>
+#include <core/debug/coreLogger.h>
 
 
 static void OnCHazelWindowDestroy(CHazelWindow* obj)
 {
-	printf("...........................OnCHazelWindowDestroy()\n");
+	CHZ_CORE_IMPORTANT("...........................OnCHazelWindowDestroy()");
 	CHazelWindowGLFW *windowGLFW = (CHazelWindowGLFW *)obj->obj;
 	CHZ_DESTROY(windowGLFW);
 }
@@ -15,7 +16,7 @@ static void OnCHazelWindowDestroy(CHazelWindow* obj)
 
 static void OnDestroy(CHazelWindowGLFW* obj)
 {
-	printf("...........................WindowGLFW->OnDestroy()\n");
+	CHZ_CORE_IMPORTANT("...........................WindowGLFW->OnDestroy()");
 	glfwDestroyWindow(obj->m_Window);
 	glfwTerminate();
 }
@@ -62,20 +63,19 @@ static void Update(CHazelWindowGLFW* obj)
 
 CHazelWindow* CHazelCreateWindow(const char *title, int width, int height)
 {
-	if (!glfwInit())
-	{
-		printf("GLFW failed to initialize.\n");
-		return NULL;
-	}
+	//Initialize GLFW.
+	int glfwSuccess = 0;
+	CHZ_CORE_ASSERT_EQ(glfwSuccess = glfwInit(), 1, "GLFW failed to initialize.\n");
+	if (!glfwSuccess) return NULL;
 
+	//Create the Window.
 	GLFWwindow* glfw_window = glfwCreateWindow(width, height, title, NULL, NULL);
 
-	if (glfw_window == NULL)
-	{
-		printf("GLFW failed to create a window.\n");
-		return NULL;
-	}
+	//Try to create the GLFWwindow.
+	CHZ_CORE_ASSERT_NEQ(glfw_window, NULL, "GLFW failed to create the window.\n");
+	if (!glfw_window) return NULL;
 
+	//Make the graphics context.
 	glfwMakeContextCurrent(glfw_window);
 
 	//Create the window.
