@@ -17,3 +17,7 @@ project "CHazel"
 		"%{_WORKING_DIR}/External/glfw/include/",
 		"%{_WORKING_DIR}/Projects/Glad/include/"
 	}
+
+	filter{}
+	filter "system:linux"
+		buildoptions {"-Wno-incompatible-pointer-types"}

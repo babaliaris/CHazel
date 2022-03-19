@@ -5,29 +5,12 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-static void Run(struct CHazelApp *this)
+
+CHazelWindow* CHazelCreateWindow(const char *title, int width, int height);
+
+
+static void Run(struct CHazelApp *obj)
 {
-	GLFWwindow* window;
-
-	/* Initialize the library */
-	if (!glfwInit())
-	{
-		printf("GLFW cound not be initialized...");
-		return;
-	}
-
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-	if (!window)
-	{
-		printf("GLFW cound not be initialized...");
-		glfwTerminate();
-		return;
-	}
-
-	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
-
 	if ( !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) )
 	{
 		printf("GLAD cound not be initialized...");
@@ -35,17 +18,15 @@ static void Run(struct CHazelApp *this)
 		return;
 	}
 
+	GLFWwindow* glfw_win = obj->m_Window->GetNativeWindow( (void *)obj->m_Window->obj );
+
 	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(glfw_win))
 	{
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
-		glfwPollEvents();
+		obj->m_Window->Update( (void *)obj->m_Window->obj );
 	}
 
 	glfwTerminate();
@@ -54,9 +35,10 @@ static void Run(struct CHazelApp *this)
 
 
 
-static void OnDestroy(struct CHazelApp *this)
+static void OnDestroy(struct CHazelApp *obj)
 {
-	printf("OnDestroy!\n");
+	printf("...........................CHazelApp->OnDestroy()\n");
+	CHZ_DESTROY(obj->m_Window);
 }
 
 
@@ -74,6 +56,7 @@ CHazelApp* CHazelCreateApp()
 
 	//Store this object into itself.
 	new_app->obj = new_app;
+	new_app->m_Window = CHazelCreateWindow("CHazel Engine", 1024, 720);
 
 	new_app->__Run__ 		= Run;
 	new_app->__OnDestroy__ 	= OnDestroy;
