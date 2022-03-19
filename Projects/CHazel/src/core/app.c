@@ -49,12 +49,6 @@ CHazelApp* CHazelCreateApp()
 {
 	CHazelApp* new_app = (CHazelApp *)CHZ_NEW(CHazelApp);
 
-	if (new_app == NULL)
-	{
-		//TODO log something here.
-		return NULL;
-	}
-
 	//Store this object into itself.
 	new_app->obj = new_app;
 	new_app->m_Window = CHazelCreateWindow("CHazel Engine", 1024, 720);
