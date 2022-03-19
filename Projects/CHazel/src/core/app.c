@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "app.h"
+
+#define CHAZEL_IMPLEMENT_GLOBAL_MEM_TRACKER
 #include <core/core.h>
+
 #include <core/debug/coreLogger.h>
 
 #include <glad/glad.h>

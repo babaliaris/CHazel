@@ -48,8 +48,8 @@
 	#define CHZ_WARN(...)
 	#define CHZ_ERROR(...)
 
-	#define CHZ_CORE_ASSERT_EQ(real, expected, ...) real; expected;
-	#define CHZ_CORE_ASSERT_NEQ(real, expected, ...) real; expected;
+	#define CHZ_ASSERT_EQ(real, expected, ...) real; expected;
+	#define CHZ_ASSERT_NEQ(real, expected, ...) real; expected;
 
 #endif
 
