@@ -19,12 +19,34 @@ typedef struct CHazelRendererAPI
 {
 	//*************************Methods*************************//
 
+	/**
+	 * Set the clear color.
+	 * 
+	 * @param r Red channel (Normalized).
+	 * @param g Green channel (Normalized).
+	 * @param b Blue channel (Normalized).
+	 * @param a Alpha channel (Normalized).
+	*/
 	void (*SetClearColor)(float r, float g, float b, float a);
 
+	/**
+	 * Clear the color buffer.
+	 * 
+	*/
 	void (*ClearColorBuffer)();
 
+	/**
+	 * Set the viewport.
+	 * 
+	*/
 	void (*SetViewport)(int x, int y, int width, int height);
 
+
+	/**
+	 * It's being called when the instance get's destroyed.
+	 * 
+	 * @param obj this instance.
+	*/
 	void (*__OnDestroy__)(struct CHazelRendererAPI *obj);
 
 	//*************************Methods*************************//

@@ -31,8 +31,18 @@ typedef struct CHazelApp
 
 	//*************************Methods*************************//
 
+	/**
+	 * Run the app.
+	 * 
+	 * @param obj this instance.
+	*/
 	void (*__Run__)(struct CHazelApp *obj);
 
+	/**
+	 * It's being called when the instance get's destroyed.
+	 * 
+	 * @param obj this instance.
+	*/
 	void (*__OnDestroy__)(struct CHazelApp *obj);
 
 	//*************************Methods*************************//
