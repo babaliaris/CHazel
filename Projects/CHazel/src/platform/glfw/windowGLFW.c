@@ -90,7 +90,7 @@ CHazelWindow* CHazelCreateWindow(const char *title, int width, int height)
 	new_window->GetWidth 		= GetWidth;
 	new_window->GetHeight 		= GetHeight;
 	new_window->GetNativeWindow = GetNativeWindow;
-	new_window->Update 			= Update;
+	new_window->__Update__ 		= Update;
 
 
 	//Initialize the CHazelWindowGLFW.

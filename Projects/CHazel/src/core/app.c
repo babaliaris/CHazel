@@ -6,12 +6,18 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-
+/**
+ * This function is being implemented on platform specific files.
+ * Check src/platform/
+*/
 CHazelWindow* CHazelCreateWindow(const char *title, int width, int height);
 
 
 static void Run(struct CHazelApp *obj)
 {
+	//Exit the application if no window.
+	if (obj->m_Window == NULL) return;
+
 	if ( !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) )
 	{
 		printf("GLAD cound not be initialized...");
@@ -27,7 +33,7 @@ static void Run(struct CHazelApp *obj)
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		obj->m_Window->Update( (void *)obj->m_Window->obj );
+		obj->m_Window->__Update__( (void *)obj->m_Window->obj );
 	}
 
 	glfwTerminate();
@@ -53,6 +59,7 @@ CHazelApp* CHazelCreateApp()
 	new_app->obj = new_app;
 	new_app->m_Window = CHazelCreateWindow("CHazel Engine", 1024, 720);
 
+	//Initialize the new CHazelApp.
 	new_app->__Run__ 		= Run;
 	new_app->__OnDestroy__ 	= OnDestroy;
 
