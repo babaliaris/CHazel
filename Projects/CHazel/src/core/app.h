@@ -2,6 +2,7 @@
 #define CHAZEL_APP_H
 
 #include <core/window.h>
+#include <core/render/rendererAPI.h>
 
 
 /**
@@ -22,6 +23,8 @@ typedef struct CHazelApp
 	//-_-_-_-_-_-_-_-_-_-_Member Variables-_-_-_-_-_-_-_-_-_-_//
 
 	CHazelWindow *m_Window;
+
+	CHazelRendererAPI *m_RendererAPI;
 	
 	//-_-_-_-_-_-_-_-_-_-_Member Variables-_-_-_-_-_-_-_-_-_-_//
 

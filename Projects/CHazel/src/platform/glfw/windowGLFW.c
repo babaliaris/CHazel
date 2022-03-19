@@ -6,7 +6,6 @@
 
 static void OnCHazelWindowDestroy(CHazelWindow* obj)
 {
-	CHZ_CORE_IMPORTANT("...........................OnCHazelWindowDestroy()");
 	CHazelWindowGLFW *windowGLFW = (CHazelWindowGLFW *)obj->obj;
 	CHZ_DESTROY(windowGLFW);
 }
