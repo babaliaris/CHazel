@@ -17,7 +17,8 @@ project "Sandbox"
 	links{
 		"CHazel",
 		"GLFW",
-		"Glad"
+		"Glad",
+		"SDS"
 	}
 
 	libdirs{
