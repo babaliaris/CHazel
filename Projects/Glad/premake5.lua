@@ -13,3 +13,7 @@ project "Glad"
 	includedirs{
 		"include/"
 	}
+
+	filter {}
+	filter "system:linux"
+		pic "on"

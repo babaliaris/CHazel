@@ -15,9 +15,11 @@ project "CHazel"
 	includedirs{
 		"src/",
 		"%{_WORKING_DIR}/External/glfw/include/",
-		"%{_WORKING_DIR}/Projects/Glad/include/"
+		"%{_WORKING_DIR}/Projects/Glad/include/",
+		"%{_WORKING_DIR}/External/sds/"
 	}
 
 	filter{}
 	filter "system:linux"
+		pic "on"
 		buildoptions {"-Wno-incompatible-pointer-types"}

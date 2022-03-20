@@ -1,3 +1,6 @@
 [submodule "External/glfw"]
 	path = External/glfw
 	url = https://github.com/babaliaris/glfw.git
+[submodule "External/sds"]
+	path = External/sds
+	url = https://github.com/babaliaris/sds.git

@@ -31,6 +31,7 @@ workspace "CHazel"
 	group "External"
 		include "External/glfw/"
 		include "Projects/Glad/"
+		include "External/sds"
 	group ""
 
 	include "Projects/CHazel/"
