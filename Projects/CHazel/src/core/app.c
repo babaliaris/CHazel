@@ -31,13 +31,6 @@ CHazelRendererAPI* CHazelCreateRendererAPI();
 
 static void Run(struct CHazelApp *obj)
 {
-
-	CHazelString *str = CHazelCreateString("This is a string");
-
-	CHZ_CORE_INFO("%s", str->GetSDS(str->obj));
-
-	CHZ_DESTROY(str);
-
 	//Exit the application if no window.
 	if (obj->m_Window == NULL) return;
 
