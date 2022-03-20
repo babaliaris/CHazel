@@ -9,6 +9,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <sds.h>
+
 /**
  * This function is being implemented on platform specific files.
  * Check src/platform/
@@ -29,6 +31,11 @@ CHazelRendererAPI* CHazelCreateRendererAPI();
 
 static void Run(struct CHazelApp *obj)
 {
+
+	sds new_str = sdsnew("This is a new sds string");
+	CHZ_CORE_INFO("%s", new_str);
+	sdsfree(new_str);
+
 	//Exit the application if no window.
 	if (obj->m_Window == NULL) return;
 
