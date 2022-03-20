@@ -2,6 +2,7 @@
 #include "str.h"
 #include <core/core.h>
 #include <core/debug/coreLogger.h>
+#include <core/app.h>
 
 
 static sds GetSDS(struct CHazelString *obj)
@@ -27,6 +28,18 @@ static void OnDestroy(struct CHazelString *obj)
 }
 
 
+//Track memory allocations and dealocations
+//in the sds (string library) side.
+void SDSCallback(int isOnNew)
+{
+	if (isOnNew)
+		CHAZEL_NUMBER_OF_ALLOCATIONS++;
+
+	else
+		CHAZEL_NUMBER_OF_DEALLOCATIONS++;
+}
+
+
 
 static void InitializeMembers(CHazelString* new_string)
 {
@@ -43,6 +56,9 @@ CHazelString* CHazelCreateString(const char *string)
 {
 	//Create the new string.
 	CHazelString* new_string = (CHazelString *)CHZ_NEW(CHazelString);
+
+	//Set sds memory tracker callback.
+	sdsSetCHazelStringMemoryTrackerCallback(SDSCallback);
 
 	//Initialize it.
 	new_string->__m_string__ = sdsnew(string);
