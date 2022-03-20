@@ -9,7 +9,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <sds.h>
+#include <core/tools/str.h>
 
 /**
  * This function is being implemented on platform specific files.
@@ -32,9 +32,11 @@ CHazelRendererAPI* CHazelCreateRendererAPI();
 static void Run(struct CHazelApp *obj)
 {
 
-	sds new_str = sdsnew("This is a new sds string");
-	CHZ_CORE_INFO("%s", new_str);
-	sdsfree(new_str);
+	CHazelString *str = CHazelCreateString("This is a string");
+
+	CHZ_CORE_INFO("%s", str->GetSDS(str->obj));
+
+	CHZ_DESTROY(str);
 
 	//Exit the application if no window.
 	if (obj->m_Window == NULL) return;
